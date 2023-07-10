@@ -134,7 +134,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"🎬[{get_size(file.file_size)}]🎥{file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
             ]
             for file in files
@@ -283,7 +283,7 @@ async def language_check(bot, query):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"[{get_size(file.file_size)}] {file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                        text=f"🎬[{get_size(file.file_size)}]🎥{file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
                     ),
                 ]
                 for file in files
@@ -689,7 +689,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f_caption
         if f_caption is None:
             f_caption = f"{files.file_name}"
-
+        buttons = [[
+            InlineKeyboardButton('⭕️𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻⭕️', url='https://t.me/tvseriezzz_updates')
+         ]]   
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 if clicked == typed:
@@ -778,6 +780,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f_caption = f_caption
         if f_caption is None:
             f_caption = f"{title}"
+        buttons = [[
+            InlineKeyboardButton('⭕️𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻⭕️', url='https://t.me/tvseriezzz_updates')
+         ]]
         await query.answer()
         if IS_VERIFY and not await check_verification(client, query.from_user.id):
             btn = [[
@@ -1143,16 +1148,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "start":
         buttons = [[
-                    InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+                    InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
-                    InlineKeyboardButton('♚ Bᴏᴛ Oᴡɴᴇʀ', callback_data="owner_info"),
-                    InlineKeyboardButton('⌬ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK)
+                    InlineKeyboardButton("♻️ ⒼⓇⓄⓊⓅ ♻️", url="https://t.me/tvseriezzz_groupz"),
+                    InlineKeyboardButton('⭕️𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻⭕️', url='https://t.me/tvseriezzz_updates')
                 ],[
-                    InlineKeyboardButton('〄 Hᴇʟᴘ', callback_data='help'),
-                    InlineKeyboardButton('⍟ Aʙᴏᴜᴛ', callback_data='about'),
-                    InlineKeyboardButton('Iɴʟɪɴᴇ Sᴇᴀʀᴄʜ ☌', switch_inline_query_current_chat='')
+                    InlineKeyboardButton("♻️ ⒼⓇⓄⓊⓅ 2 ♻️", url="https://t.me/MrCVENOM_chats"),
+                    InlineKeyboardButton("🔥 Dev 🔥", callback_data='source')
                 ],[
-                    InlineKeyboardButton('✇ Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ✇', url=CHNL_LNK)
+                    InlineKeyboardButton('ℹ️ Help', callback_data='help'),
+                    InlineKeyboardButton('😊 About', callback_data='about')
+                ],[
+                    InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat='')
                   ]]
         
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -1578,7 +1585,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}'
+                    text=f"🎬[{get_size(file.file_size)}]🎥{file.file_name}", callback_data=f'{pre}#{file.file_id}'
                 ),
             ]
             for file in files
@@ -1689,7 +1696,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>Hᴇʏ {message.from_user.mention}, Hᴇʀᴇ ɪs Wʜᴀᴛ I Fᴏᴜɴᴅ Iɴ Mʏ Dᴀᴛᴀʙᴀsᴇ Fᴏʀ Yᴏᴜʀ Qᴜᴇʀʏ {search}.</b>"
+       cap = f"<b>🎬 Title :- {search}</b>\n\n<b>🗣️ Requested By :- {message.from_user.mention}</b>\n\n<b>©️ {message.chat.title} </b>\n\n<b> 👇👇👇👇👇👇👇👇👇 </b>"
     if imdb and imdb.get('poster'):
         try:
             hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
